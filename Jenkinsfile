@@ -18,7 +18,7 @@ pipeline {
 		stage("Image") {
 			steps {
 				sh 'sudo docker build -t jenkins-pipeline:$BUILD_TAG .'
-				sh 'sudo docker tag jenkins-pipeline:$BUILD_TAG priyaaa2671/jenkins '
+				sh 'sudo docker tag jenkins-pipeline:$BUILD_TAG priyaaa2671/jenkins-pipline '
 				}
 			}
 				
@@ -27,7 +27,7 @@ pipeline {
 			steps {
 			withCredentials([string(credentialsId: 'docker_hub', variable: 'docker_hub_password_var')])   {
 				sh 'sudo docker login -u priyaaa2671 -p ${docker_hub_password_var}'
-				sh ' sudo docker push priyaaa2671/jenkins-pipeline/jenkins'
+				sh ' sudo docker push priyaaa2671/jenkins-pipeline'
 				}
 			}
 		}
@@ -42,7 +42,7 @@ pipeline {
 	 	stage("testing website") {
 			steps {
 				retry(5) {
-				sh "curl --silent http://172.31.8.207:8082/java-web-app/ | grep -i india"
+				sh 'curl --silent http://172.31.8.207:8082/java-web-app/ | grep -i "india" '
 				}
 	   		}
 		}
