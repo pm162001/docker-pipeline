@@ -5,7 +5,7 @@ pipeline {
 	stages {
 		stage("SCM") {
 			steps {
-				git branch: 'main', url: 'https://github.com/siddharth0595/docker-javapileline-on-jenkins.git'
+				git branch: 'main', url: 'https://github.com/pm162001/docker-pipeline.git'
 				}
 			}
 
