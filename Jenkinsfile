@@ -18,7 +18,7 @@ pipeline {
 		stage("Image") {
 			steps {
 				sh 'sudo docker build -t jenkins-pipeline:$BUILD_TAG .'
-				sh 'sudo docker tag jenkins-pipeline:$BUILD_TAG priyaaa2671 jenkins-pipeline:$BUILD_TAG'
+				sh 'sudo docker tag jenkins-pipeline:$BUILD_TAG priyaaa2671/jenkins '
 				}
 			}
 				
