@@ -36,7 +36,7 @@ pipeline {
 			steps {
 				sh 'sudo docker run -d nginx'
 				sh 'sudo docker rm -f $(sudo docker ps -a -q)'
-				sh 'sudo docker run -dit -p 8081:8080 --name web1 priyaaa2671/jenkins-pipeline:$BUILD_TAG'
+				sh 'sudo docker run -dit -p 8081:8080 --name web1 priyaaa2671/jenkins-pipeline'
 				}
 			}
 	 	stage("testing website") {
@@ -60,7 +60,7 @@ pipeline {
 			steps {
 			 sshagent(['ec2-call-slave2']) {
 			    sh 'ssh -o StrictHostKeyChecking=no ec2-user@3.110.162.80 sudo docker rm -f $(sudo docker ps -a -q)' 
-	                    sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.162.80 sudo docker run  -d  -p  49153:8080  siddharth121/pipeline-java:$BUILD_TAG"
+	                    sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.162.80 sudo docker run  -d  -p  49153:8080  siddharth121/pipeline-java"
 				}
 			}
 		}
