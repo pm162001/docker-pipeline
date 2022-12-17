@@ -42,7 +42,7 @@ pipeline {
 	 	stage("testing website") {
 			steps {
 				retry(8) {
-				sh 'curl --silent http://172.31.8.207:8082/java-web-app/ | grep -i "india" '
+				sh 'curl --silent http://172.31.8.207:8081/java-web-app/ | grep -i "india" '
 				}
 	   		}
 		}
