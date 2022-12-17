@@ -58,7 +58,7 @@ pipeline {
 		
 		stage("Prod Env") {
 			steps {
-			 sshagent(['ec2-call-slave2']) {
+			 sshagent(['4eeffa2e-f3fc-4751-baf0-e0385c5b9e83']) {
 			    sh 'ssh -o StrictHostKeyChecking=no ec2-user@3.110.176.182 sudo docker rm -f $(sudo docker ps -a -q)' 
 	                    sh "ssh -o StrictHostKeyChecking=no ec2-user@3.110.176.182 sudo docker run  -d  -p  49153:8080  priyaaa2671/jenkins-pipeline"
 				}
