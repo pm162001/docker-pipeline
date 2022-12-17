@@ -27,7 +27,7 @@ pipeline {
 			steps {
 			withCredentials([string(credentialsId: 'docker_hub', variable: 'docker_hub_password_var')])   {
 				sh 'sudo docker login -u priyaaa2671 -p ${docker_hub_password_var}'
-				sh 'sudo docker push priyaaa2671/jenkins-pipeline:$BUILD_TAG'
+				sh ' sudo docker push priyaaa2671/jenkins-pipeline:$BUILD_TAG'
 				}
 			}
 		}
@@ -36,7 +36,7 @@ pipeline {
 			steps {
 				sh 'sudo docker run -d nginx'
 				sh 'sudo docker rm -f $(sudo docker ps -a -q)'
-				sh 'sudo docker run -dit -p 8082:8080 --name web1 siddharth121/pipeline-java:$BUILD_TAG'
+				sh 'sudo docker run -dit -p 8081:8080 --name web1 priyaaa2671/jenkins-pipeline:$BUILD_TAG'
 				}
 			}
 	 	stage("testing website") {
