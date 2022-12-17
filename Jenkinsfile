@@ -26,14 +26,16 @@ pipeline {
 		stage("Docker Hub") {
 			steps {
 			withCredentials([string(credentialsId: 'docker_hub', variable: 'docker_hub_password_var')])   {
-				sh 'sudo docker login -u siddharth121 -p ${docker_hub_password_var}'
-				sh 'sudo docker push siddharth121/pipeline-java:$BUILD_TAG'
+				sh 'sudo docker login -u priyaaa2671 -p ${docker_hub_password_var}'
+				sh 'sudo docker push priyaaa2671/pipeline-java:$BUILD_TAG'
 				}
 			}
 		}
 
 		stage("QAT Testing") {
 			steps {
+				sh 'sudo docker run -d nginx'
+				sh 'sudo docker rm -f $(sudo docker ps -a -q)'
 				sh 'sudo docker run -dit -p 8082:8080 --name web1 siddharth121/pipeline-java:$BUILD_TAG'
 				}
 			}
