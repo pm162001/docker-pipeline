@@ -27,7 +27,7 @@ pipeline {
 			steps {
 			withCredentials([string(credentialsId: 'docker_hub', variable: 'docker_hub_password_var')])   {
 				sh 'sudo docker login -u priyaaa2671 -p ${docker_hub_password_var}'
-				sh 'sudo docker push priyaaa2671/pipeline-java:$BUILD_TAG'
+				sh 'sudo docker push priyaaa2671/jenkins-pipeline:$BUILD_TAG'
 				}
 			}
 		}
